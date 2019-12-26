@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanxu.mapper.TOrderDetailMapper">
+  <resultMap id="BaseResultMap" type="com.hanxu.entity.TOrderDetail">
+    <!--@mbg.generated-->
+    <!--@Table t_order_detail-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orderid" jdbcType="INTEGER" property="orderid" />
+    <result column="foodid" jdbcType="INTEGER" property="foodid" />
+    <result column="foodname" jdbcType="VARCHAR" property="foodname" />
+    <result column="orderdate" jdbcType="DATE" property="orderdate" />
+    <result column="foodprice" jdbcType="DOUBLE" property="foodprice" />
+    <result column="foodnum" jdbcType="INTEGER" property="foodnum" />
+    <result column="foodpic" jdbcType="VARCHAR" property="foodpic" />
+    <result column="food_total_price" jdbcType="DOUBLE" property="foodTotalPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, orderid, foodid, foodname, orderdate, foodprice, foodnum, foodpic, food_total_price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_order_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_order_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.TOrderDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_order_detail (orderid, foodid, foodname, 
+      orderdate, foodprice, foodnum, 
+      foodpic, food_total_price)
+    values (#{orderid,jdbcType=INTEGER}, #{foodid,jdbcType=INTEGER}, #{foodname,jdbcType=VARCHAR}, 
+      #{orderdate,jdbcType=DATE}, #{foodprice,jdbcType=DOUBLE}, #{foodnum,jdbcType=INTEGER}, 
+      #{foodpic,jdbcType=VARCHAR}, #{foodTotalPrice,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.TOrderDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderid,
+      </if>
+      <if test="foodid != null">
+        foodid,
+      </if>
+      <if test="foodname != null">
+        foodname,
+      </if>
+      <if test="orderdate != null">
+        orderdate,
+      </if>
+      <if test="foodprice != null">
+        foodprice,
+      </if>
+      <if test="foodnum != null">
+        foodnum,
+      </if>
+      <if test="foodpic != null">
+        foodpic,
+      </if>
+      <if test="foodTotalPrice != null">
+        food_total_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="foodid != null">
+        #{foodid,jdbcType=INTEGER},
+      </if>
+      <if test="foodname != null">
+        #{foodname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdate != null">
+        #{orderdate,jdbcType=DATE},
+      </if>
+      <if test="foodprice != null">
+        #{foodprice,jdbcType=DOUBLE},
+      </if>
+      <if test="foodnum != null">
+        #{foodnum,jdbcType=INTEGER},
+      </if>
+      <if test="foodpic != null">
+        #{foodpic,jdbcType=VARCHAR},
+      </if>
+      <if test="foodTotalPrice != null">
+        #{foodTotalPrice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hanxu.entity.TOrderDetail">
+    <!--@mbg.generated-->
+    update t_order_detail
+    <set>
+      <if test="orderid != null">
+        orderid = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="foodid != null">
+        foodid = #{foodid,jdbcType=INTEGER},
+      </if>
+      <if test="foodname != null">
+        foodname = #{foodname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdate != null">
+        orderdate = #{orderdate,jdbcType=DATE},
+      </if>
+      <if test="foodprice != null">
+        foodprice = #{foodprice,jdbcType=DOUBLE},
+      </if>
+      <if test="foodnum != null">
+        foodnum = #{foodnum,jdbcType=INTEGER},
+      </if>
+      <if test="foodpic != null">
+        foodpic = #{foodpic,jdbcType=VARCHAR},
+      </if>
+      <if test="foodTotalPrice != null">
+        food_total_price = #{foodTotalPrice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hanxu.entity.TOrderDetail">
+    <!--@mbg.generated-->
+    update t_order_detail
+    set orderid = #{orderid,jdbcType=INTEGER},
+      foodid = #{foodid,jdbcType=INTEGER},
+      foodname = #{foodname,jdbcType=VARCHAR},
+      orderdate = #{orderdate,jdbcType=DATE},
+      foodprice = #{foodprice,jdbcType=DOUBLE},
+      foodnum = #{foodnum,jdbcType=INTEGER},
+      foodpic = #{foodpic,jdbcType=VARCHAR},
+      food_total_price = #{foodTotalPrice,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getList" resultMap="BaseResultMap">
+    select * from t_order_detail
+  </select>
+  <select id="getListByUserId" resultMap="BaseResultMap" parameterType="int">
+    select * from t_order_detail where orderid in (select t_order.id from t_order where userid=#{userid})
+  </select>
+    <select id="getListByOrderId" resultMap="BaseResultMap">
+      select * from  t_order_detail where orderid = #{orderId}
+    </select>
+</mapper>

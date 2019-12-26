@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanxu.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hanxu.entity.User">
+    <!--@mbg.generated-->
+    <!--@Table t_user-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="member_rank" jdbcType="VARCHAR" property="memberRank" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="useful_integral" jdbcType="INTEGER" property="usefulIntegral" />
+    <result column="used_integral" jdbcType="INTEGER" property="usedIntegral" />
+    <result column="frozen" jdbcType="INTEGER" property="frozen" />
+    <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="isAdmin" jdbcType="VARCHAR" property="isadmin" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, username, nickname, truename, sex, birthday, phone, email, member_rank, integral, 
+    useful_integral, used_integral, frozen, pic_path, `password`, isAdmin
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_user (username, nickname, truename, 
+      sex, birthday, phone, 
+      email, member_rank, integral, 
+      useful_integral, used_integral, frozen, 
+      pic_path, `password`, isAdmin
+      )
+    values (#{username,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{memberRank,jdbcType=VARCHAR}, #{integral,jdbcType=INTEGER}, 
+      #{usefulIntegral,jdbcType=INTEGER}, #{usedIntegral,jdbcType=INTEGER}, #{frozen,jdbcType=INTEGER}, 
+      #{picPath,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{isadmin,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="memberRank != null">
+        member_rank,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="usefulIntegral != null">
+        useful_integral,
+      </if>
+      <if test="usedIntegral != null">
+        used_integral,
+      </if>
+      <if test="frozen != null">
+        frozen,
+      </if>
+      <if test="picPath != null">
+        pic_path,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="isadmin != null">
+        isAdmin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRank != null">
+        #{memberRank,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="usefulIntegral != null">
+        #{usefulIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="usedIntegral != null">
+        #{usedIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="frozen != null">
+        #{frozen,jdbcType=INTEGER},
+      </if>
+      <if test="picPath != null">
+        #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="isadmin != null">
+        #{isadmin,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hanxu.entity.User">
+    <!--@mbg.generated-->
+    update t_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRank != null">
+        member_rank = #{memberRank,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="usefulIntegral != null">
+        useful_integral = #{usefulIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="usedIntegral != null">
+        used_integral = #{usedIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="frozen != null">
+        frozen = #{frozen,jdbcType=INTEGER},
+      </if>
+      <if test="picPath != null">
+        pic_path = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="isadmin != null">
+        isAdmin = #{isadmin,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hanxu.entity.User">
+    <!--@mbg.generated-->
+    update t_user
+    set username = #{username,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      truename = #{truename,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      member_rank = #{memberRank,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      useful_integral = #{usefulIntegral,jdbcType=INTEGER},
+      used_integral = #{usedIntegral,jdbcType=INTEGER},
+      frozen = #{frozen,jdbcType=INTEGER},
+      pic_path = #{picPath,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      isAdmin = #{isadmin,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getList" resultMap="BaseResultMap">
+    select * from t_user
+  </select>
+
+  <delete id="delById" parameterType="int">
+    delete from t_user where id =#{id}
+  </delete>
+
+  <update id="setAdmin" parameterType="int">
+    update t_user set isAdmin="是" where id = #{id}
+  </update>
+
+  <update id="reAdmin" parameterType="int">
+    update t_user set isAdmin="否" where id = #{id}
+  </update>
+    <select id="getUserByPhone" resultMap="BaseResultMap" parameterType="string">
+      select * from t_user where phone=#{phone}
+    </select>
+
+  <select id="isExist" parameterType="string" resultType="int">
+    select count(1) from  t_user where username=#{username}
+  </select>
+  <update id="reduceIntegral" parameterType="int">
+    update t_user set integral = integral-#{integral} where id=#{userId}
+  </update>
+  <update id="addIntegral">
+    update t_user set integral = integral+#{integral} where id=#{userId}
+  </update>
+    <delete id="batchDel" parameterType="int">
+      delete from t_user where id in
+      <foreach collection="list" item="id" open="(" close=")" separator=",">
+        #{id}
+      </foreach>
+    </delete>
+  <select id="hasPhone" parameterType="string" resultType="int">
+    select count(1) from t_user where phone=#{phone}
+  </select>
+    <select id="getPhoneListById" resultType="java.lang.String">
+      select phone from  t_user where id in
+      <foreach collection="list" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+    </select>
+
+
+</mapper>

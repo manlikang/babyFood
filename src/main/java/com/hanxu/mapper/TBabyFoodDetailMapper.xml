@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanxu.mapper.TBabyFoodDetailMapper">
+  <resultMap id="BaseResultMap" type="com.hanxu.entity.TBabyFoodDetail">
+    <!--@mbg.generated-->
+    <!--@Table t_baby_food_detail-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="detail_name" jdbcType="VARCHAR" property="detailName" />
+    <result column="age_range" jdbcType="VARCHAR" property="ageRange" />
+    <result column="packing" jdbcType="VARCHAR" property="packing" />
+    <result column="profile" jdbcType="VARCHAR" property="profile" />
+    <result column="detail_profile" jdbcType="VARCHAR" property="detailProfile" />
+    <result column="warn" jdbcType="VARCHAR" property="warn" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="food_id" jdbcType="INTEGER" property="foodId" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+  </resultMap>
+
+  <resultMap id="FoodDetailMap" type="com.hanxu.entity.domain.FoodDetail">
+    <!--@mbg.generated-->
+    <!--@Table t_baby_food_detail-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="detail_name" jdbcType="VARCHAR" property="detailName" />
+    <result column="age_range" jdbcType="VARCHAR" property="ageRange" />
+    <result column="packing" jdbcType="VARCHAR" property="packing" />
+    <result column="profile" jdbcType="VARCHAR" property="profile" />
+    <result column="detail_profile" jdbcType="VARCHAR" property="detailProfile" />
+    <result column="warn" jdbcType="VARCHAR" property="warn" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="food_id" jdbcType="INTEGER" property="foodId" />
+    <result column="foodpic" jdbcType="INTEGER" property="pic" />
+    <result column="food_price" jdbcType="INTEGER" property="price" />
+    <result column="foodType" jdbcType="INTEGER" property="foodType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, detail_name, age_range, packing, profile, detail_profile, warn, integral, food_id, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_baby_food_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_baby_food_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.TBabyFoodDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_baby_food_detail (detail_name, age_range, packing, 
+      profile, detail_profile, warn, 
+      integral, food_id, is_delete
+      )
+    values (#{detailName,jdbcType=VARCHAR}, #{ageRange,jdbcType=VARCHAR}, #{packing,jdbcType=VARCHAR}, 
+      #{profile,jdbcType=VARCHAR}, #{detailProfile,jdbcType=VARCHAR}, #{warn,jdbcType=VARCHAR}, 
+      #{integral,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.TBabyFoodDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_baby_food_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailName != null">
+        detail_name,
+      </if>
+      <if test="ageRange != null">
+        age_range,
+      </if>
+      <if test="packing != null">
+        packing,
+      </if>
+      <if test="profile != null">
+        profile,
+      </if>
+      <if test="detailProfile != null">
+        detail_profile,
+      </if>
+      <if test="warn != null">
+        warn,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="foodId != null">
+        food_id,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailName != null">
+        #{detailName,jdbcType=VARCHAR},
+      </if>
+      <if test="ageRange != null">
+        #{ageRange,jdbcType=VARCHAR},
+      </if>
+      <if test="packing != null">
+        #{packing,jdbcType=VARCHAR},
+      </if>
+      <if test="profile != null">
+        #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="detailProfile != null">
+        #{detailProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="warn != null">
+        #{warn,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="foodId != null">
+        #{foodId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hanxu.entity.TBabyFoodDetail">
+    <!--@mbg.generated-->
+    update t_baby_food_detail
+    <set>
+      <if test="detailName != null">
+        detail_name = #{detailName,jdbcType=VARCHAR},
+      </if>
+      <if test="ageRange != null">
+        age_range = #{ageRange,jdbcType=VARCHAR},
+      </if>
+      <if test="packing != null">
+        packing = #{packing,jdbcType=VARCHAR},
+      </if>
+      <if test="profile != null">
+        profile = #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="detailProfile != null">
+        detail_profile = #{detailProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="warn != null">
+        warn = #{warn,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="foodId != null">
+        food_id = #{foodId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hanxu.entity.TBabyFoodDetail">
+    <!--@mbg.generated-->
+    update t_baby_food_detail
+    set detail_name = #{detailName,jdbcType=VARCHAR},
+      age_range = #{ageRange,jdbcType=VARCHAR},
+      packing = #{packing,jdbcType=VARCHAR},
+      profile = #{profile,jdbcType=VARCHAR},
+      detail_profile = #{detailProfile,jdbcType=VARCHAR},
+      warn = #{warn,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      food_id = #{foodId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getList" resultMap="BaseResultMap">
+    select * from t_baby_food_detail where food_id in (select id from t_baby_food where isdelete="0")
+  </select>
+  
+<select id="getFoodDetailByFoodId" parameterType="int" resultMap="FoodDetailMap">
+  select tbd.*,tb.foodpic,tb.food_price,tb.foodType from t_baby_food_detail tbd,t_baby_food tb where tbd.food_id=tb.id and tbd.food_id=#{foodId}
+</select>
+</mapper>

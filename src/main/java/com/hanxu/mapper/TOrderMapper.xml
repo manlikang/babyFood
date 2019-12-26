@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanxu.mapper.TOrderMapper">
+  <resultMap id="BaseResultMap" type="com.hanxu.entity.TOrder">
+    <!--@mbg.generated-->
+    <!--@Table t_order-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sendtype" jdbcType="VARCHAR" property="sendtype" />
+    <result column="paytype" jdbcType="VARCHAR" property="paytype" />
+    <result column="paycount" jdbcType="DOUBLE" property="paycount" />
+    <result column="orderdate" jdbcType="DATE" property="orderdate" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="shperson" jdbcType="VARCHAR" property="shperson" />
+    <result column="shphone" jdbcType="VARCHAR" property="shphone" />
+    <result column="shaddress" jdbcType="VARCHAR" property="shaddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, sendtype, paytype, paycount, orderdate, userid, shperson, shphone, shaddress
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.TOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_order (sendtype, paytype, paycount, 
+      orderdate, userid, shperson, 
+      shphone, shaddress)
+    values (#{sendtype,jdbcType=VARCHAR}, #{paytype,jdbcType=VARCHAR}, #{paycount,jdbcType=DOUBLE}, 
+      #{orderdate,jdbcType=DATE}, #{userid,jdbcType=INTEGER}, #{shperson,jdbcType=VARCHAR}, 
+      #{shphone,jdbcType=VARCHAR}, #{shaddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hanxu.entity.TOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sendtype != null">
+        sendtype,
+      </if>
+      <if test="paytype != null">
+        paytype,
+      </if>
+      <if test="paycount != null">
+        paycount,
+      </if>
+      <if test="orderdate != null">
+        orderdate,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="shperson != null">
+        shperson,
+      </if>
+      <if test="shphone != null">
+        shphone,
+      </if>
+      <if test="shaddress != null">
+        shaddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sendtype != null">
+        #{sendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="paycount != null">
+        #{paycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdate != null">
+        #{orderdate,jdbcType=DATE},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="shperson != null">
+        #{shperson,jdbcType=VARCHAR},
+      </if>
+      <if test="shphone != null">
+        #{shphone,jdbcType=VARCHAR},
+      </if>
+      <if test="shaddress != null">
+        #{shaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hanxu.entity.TOrder">
+    <!--@mbg.generated-->
+    update t_order
+    <set>
+      <if test="sendtype != null">
+        sendtype = #{sendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null">
+        paytype = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="paycount != null">
+        paycount = #{paycount,jdbcType=DOUBLE},
+      </if>
+      <if test="orderdate != null">
+        orderdate = #{orderdate,jdbcType=DATE},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="shperson != null">
+        shperson = #{shperson,jdbcType=VARCHAR},
+      </if>
+      <if test="shphone != null">
+        shphone = #{shphone,jdbcType=VARCHAR},
+      </if>
+      <if test="shaddress != null">
+        shaddress = #{shaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hanxu.entity.TOrder">
+    <!--@mbg.generated-->
+    update t_order
+    set sendtype = #{sendtype,jdbcType=VARCHAR},
+      paytype = #{paytype,jdbcType=VARCHAR},
+      paycount = #{paycount,jdbcType=DOUBLE},
+      orderdate = #{orderdate,jdbcType=DATE},
+      userid = #{userid,jdbcType=INTEGER},
+      shperson = #{shperson,jdbcType=VARCHAR},
+      shphone = #{shphone,jdbcType=VARCHAR},
+      shaddress = #{shaddress,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="getOrderIdByUserId" resultType="int">
+      select id from t_order where userid=#{userId}
+    </select>
+  <select id="getList" resultMap="BaseResultMap">
+    select * from t_order
+  </select>
+</mapper>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanxu.mapper.TIntegralMapper">
+  <resultMap id="BaseResultMap" type="com.hanxu.entity.TIntegral">
+    <!--@mbg.generated-->
+    <!--@Table t_integral-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="detailed" jdbcType="VARCHAR" property="detailed" />
+    <result column="usefulness" jdbcType="VARCHAR" property="usefulness" />
+    <result column="surplus" jdbcType="VARCHAR" property="surplus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, userid, detailed, usefulness, surplus
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_integral
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_integral
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hanxu.entity.TIntegral">
+    <!--@mbg.generated-->
+    insert into t_integral (id, userid, detailed, 
+      usefulness, surplus)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{detailed,jdbcType=VARCHAR}, 
+      #{usefulness,jdbcType=VARCHAR}, #{surplus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hanxu.entity.TIntegral">
+    <!--@mbg.generated-->
+    insert into t_integral
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="detailed != null">
+        detailed,
+      </if>
+      <if test="usefulness != null">
+        usefulness,
+      </if>
+      <if test="surplus != null">
+        surplus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="detailed != null">
+        #{detailed,jdbcType=VARCHAR},
+      </if>
+      <if test="usefulness != null">
+        #{usefulness,jdbcType=VARCHAR},
+      </if>
+      <if test="surplus != null">
+        #{surplus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hanxu.entity.TIntegral">
+    <!--@mbg.generated-->
+    update t_integral
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="detailed != null">
+        detailed = #{detailed,jdbcType=VARCHAR},
+      </if>
+      <if test="usefulness != null">
+        usefulness = #{usefulness,jdbcType=VARCHAR},
+      </if>
+      <if test="surplus != null">
+        surplus = #{surplus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hanxu.entity.TIntegral">
+    <!--@mbg.generated-->
+    update t_integral
+    set userid = #{userid,jdbcType=INTEGER},
+      detailed = #{detailed,jdbcType=VARCHAR},
+      usefulness = #{usefulness,jdbcType=VARCHAR},
+      surplus = #{surplus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="getListByUserId" resultMap="BaseResultMap">
+      select * from t_integral where userid=#{id}
+    </select>
+</mapper>
